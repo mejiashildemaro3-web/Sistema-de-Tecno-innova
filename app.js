@@ -1,8 +1,8 @@
 // =========================================================================
 // 1. CONFIGURACIÓN DE SUPABASE
 // =========================================================================
-const SUPABASE_URL = 'https://TU_PROYECTO.supabase.co';
-const SUPABASE_KEY = 'TU_LLAVE_PUBLICA_ANONIMA';
+const SUPABASE_URL = 'https://TU_PROYECTO.supabase.co'; // Reemplazar
+const SUPABASE_KEY = 'TU_LLAVE_PUBLICA_ANONIMA'; // Reemplazar
 
 // Inicializar el cliente
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -136,5 +136,8 @@ function showAlert(title, message, type) {
         alertIcon.className = 'fa-solid fa-triangle-exclamation';
     }
 
-    setTimeout(() => { alertBox.style.display = 'none'; }, 6000);
+    // Ocultar alerta después de 6 segundos
+    setTimeout(() => { 
+        alertBox.style.display = 'none'; 
+    }, 6000);
 }
