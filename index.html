@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecno-Innova C.A. - Sistema Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Cliente de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>Tecno-Innova C.A.</h2>
+                <p>Security Operations</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li data-view="pedidos"><a href="#"><i class="fa-solid fa-cart-plus"></i> Nuevo Pedido</a></li>
+                <li data-view="gestion"><a href="#"><i class="fa-solid fa-box-archive"></i> Gestión de Pedidos</a></li>
+                <li class="active" data-view="ordenes"><a href="#"><i class="fa-solid fa-screwdriver-wrench"></i> Órdenes & Técnicos</a></li>
+                <li data-view="facturacion"><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> Facturación</a></li>
+                <li data-view="crear-factura"><a href="#"><i class="fa-solid fa-file-circle-plus"></i> Crear Factura</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="page-title-top">
+                    <h1 id="view-title">Órdenes & Técnicos</h1>
+                </div>
+                <div class="top-bar-actions">
+                    <button class="btn-secondary" onclick="window.location.reload()">Sincronizar <i class="fa-solid fa-rotate"></i></button>
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Perfil">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Vistas Dinámicas -->
+            <div class="dashboard-body">
+                
+                <!-- VISTA: Órdenes y Técnicos -->
+                <section id="view-ordenes" class="view-section">
+                    <div class="dashboard-header-text">
+                        <h2>Gestión de Órdenes y Técnicos</h2>
+                        <p>Monitoreo de cuadrillas y órdenes de servicio en tiempo real</p>
+                    </div>
+                    <div class="workspace-grid">
+                        <div class="card table-card">
+                            <div class="table-header">
+                                <h3>Órdenes de Servicio Activas</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table>
+                                   <thead>
+                                       <tr>
+                                           <th>ID</th>
+                                           <th>TÉCNICO ASIGNADO</th>
+                                           <th>ESTADO</th>
+                                           <th>FECHA</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody id="tabla-ordenes-body">
+                                       <tr><td colspan="4" style="text-align:center;">Cargando desde Supabase...</td></tr>
+                                   </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card tech-availability-card">
+                            <div class="panel-header">
+                                <h3>Técnicos Registrados</h3>
+                                <span class="zone-label">Zona Capital</span>
+                            </div>
+                            <div class="tech-list" id="lista-tecnicos-disponibles">
+                                <p style="font-size:0.85rem; color:var(--text-secondary);">Cargando técnicos...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VISTA: Facturación -->
+                <section id="view-facturacion" class="view-section" style="display: none;">
+                    <div class="dashboard-header-text">
+                        <h2>Módulo de Facturación</h2>
+                        <p>Historial de facturas emitidas y control fiscal</p>
+                    </div>
+                    <div class="action-bar">
+                        <button class="btn-primary" onclick="cambiarVista('crear-factura')"><i class="fa-solid fa-plus"></i> Nueva Factura</button>
+                    </div>
+                    <div class="card table-card">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nº FACTURA</th>
+                                        <th>CLIENTE</th>
+                                        <th>SUBTOTAL</th>
+                                        <th>IMPUESTO (IVA)</th>
+                                        <th>TOTAL</th>
+                                        <th>ESTADO</th>
+                                        <th>FECHA</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-facturas-body">
+                                    <tr><td colspan="7" style="text-align:center;">Cargando facturas...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VISTA: Crear Factura -->
+                <section id="view-crear-factura" class="view-section" style="display: none;">
+                    <div class="dashboard-header-text">
+                        <h2>Generación de Nueva Factura</h2>
+                        <p>Registro fiscal conectado a tablas de Supabase</p>
+                    </div>
+                    <div class="card form-card">
+                        <form id="form-crear-factura" onsubmit="guardarFactura(event)">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Número de Factura</label>
+                                    <input type="text" id="fac-numero" value="FAC-2026-009" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Seleccionar Cliente Registrado</label>
+                                    <select id="fac-cliente-select" class="form-control" required>
+                                        <option value="">Cargando clientes...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción del Ítem / Servicio</label>
+                                    <input type="text" id="fac-descripcion" placeholder="Ej. Instalación de sistema biométrico" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cantidad</label>
+                                    <input type="number" id="fac-cantidad" value="1" min="1" required oninput="calcularTotalFactura()">
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio Unitario ($)</label>
+                                    <input type="number" step="0.01" id="fac-precio" placeholder="0.00" required oninput="calcularTotalFactura()">
+                                </div>
+                                <div class="form-group">
+                                    <label>Subtotal ($)</label>
+                                    <input type="text" id="fac-subtotal-calc" readonly value="$0.00" style="background:#f1f5f9;">
+                                </div>
+                                <div class="form-group">
+                                    <label>Impuestos / IVA (16%)</label>
+                                    <input type="text" id="fac-impuesto-calc" readonly value="$0.00" style="background:#f1f5f9;">
+                                </div>
+                                <div class="form-group">
+                                    <label>Monto Total a Pagar ($)</label>
+                                    <input type="text" id="fac-total-calc" readonly value="$0.00" style="background:#f1f5f9; font-weight:bold; color:var(--primary-blue);">
+                                </div>
+                            </div>
+                            <div class="action-bar" style="margin-top:20px;">
+                                <button type="submit" class="btn-primary"><i class="fa-solid fa-check"></i> Emitir Factura en Supabase</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- VISTA: Gestión de Pedidos -->
+                <section id="view-gestion" class="view-section" style="display: none;">
+                    <div class="dashboard-header-text">
+                        <h2>Gestión de Pedidos</h2>
+                        <p>Listado general de requerimientos de seguridad</p>
+                    </div>
+                    <div class="card table-card">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr><th>ID PEDIDO</th><th>CLIENTE ID</th><th>MONTO TOTAL</th><th>ESTADO</th></tr>
+                                </thead>
+                                <tbody id="tabla-pedidos-body">
+                                    <tr><td colspan="4" style="text-align:center;">Cargando pedidos...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VISTA: Nuevo Pedido -->
+                <section id="view-pedidos" class="view-section" style="display: none;">
+                    <div class="dashboard-header-text">
+                        <h2>Registrar Nuevo Pedido</h2>
+                        <p>Apertura de solicitud comercial para Tecno-Innova</p>
+                    </div>
+                    <div class="card form-card">
+                        <form id="form-nuevo-pedido" onsubmit="guardarPedido(event)">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>ID del Cliente (UUID)</label>
+                                    <input type="text" id="ped-cliente-id" required placeholder="UUID del cliente en Supabase">
+                                </div>
+                                <div class="form-group">
+                                    <label>Monto Total Estimado ($)</label>
+                                    <input type="number" step="0.01" id="ped-total" required placeholder="1500.00">
+                                </div>
+                            </div>
+                            <div class="action-bar" style="margin-top:20px;">
+                                <button type="submit" class="btn-primary">Registrar Pedido</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script principal -->
+    <script src="app.js"></script>
+</body>
+</html>
