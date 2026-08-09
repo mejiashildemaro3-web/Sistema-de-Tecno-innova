@@ -1,0 +1,307 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Facturación - Tecno-Innova C.A.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d8dadc",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d8e3fb",
+                        "on-surface-variant": "#434655",
+                        "on-primary-fixed": "#00174b",
+                        "on-error-container": "#93000a",
+                        "on-background": "#191c1e",
+                        "background": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-bright": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary-fixed": "#111c2d",
+                        "primary": "#004ac6",
+                        "tertiary": "#943700",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-container": "#eeefff",
+                        "surface": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "outline": "#737686",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-container": "#d5e0f8",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container": "#eceef0",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "on-surface": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#545f73",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#586377",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-container": "#bc4800",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-tint": "#0053db",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container_margin": "24px",
+                        "gutter_vertical": "16px",
+                        "gutter_horizontal": "16px",
+                        "sidebar_width": "260px",
+                        "base_unit": "4px",
+                        "card_padding": "20px"
+                    },
+                    "fontFamily": {
+                        "body-base": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "title-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "data-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-base antialiased selection:bg-primary selection:text-on-primary">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-inverse-surface text-inverse-on-surface border-r border-outline-variant shadow-sm hidden md:flex flex-col py-6 z-20">
+<div class="px-6 mb-8 flex items-center space-x-3">
+<img alt="Security Operations Logo" class="w-10 h-10 rounded-full object-cover shadow-sm bg-on-primary/10" data-alt="A modern, minimalist corporate logo for a security operations center, featuring a stylized shield or geometric emblem in crisp white against a deep blue background. The design is clean, high-tech, and instills a sense of trust and authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsJTiCuHVp8BE18GgmMf0nTtnqPL5s53PAyO78OgAsBDh5LtmX1AclkHpNQrTrxHB4dDQCvjEvdAhmsZboP8g7_3_oan4tcck2tpDPJfefX6yilpGy0i5VzjviEq9VZeaHxZlw4eipU5LtqQV-wMkNdPY1CvAHRUX-14EROlvPSl-35ATJo9JQc9W0nrjHhsJIM32dg4BhB3zykzECukO1wt8XluGKFBrWXFFhptxWFtDRoxYiPz9QZA">
+<div>
+<h2 class="text-title-sm font-title-sm text-inverse-on-surface">SecOps Admin</h2>
+<p class="text-[12px] opacity-80 font-medium">Enterprise Security</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center space-x-3 px-3 py-2 text-inverse-on-surface/70 hover:bg-white/10 rounded-lg mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="add_shopping_cart" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_shopping_cart</span>
+<span class="font-body-base text-body-base">Nuevo Pedido</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-inverse-on-surface/70 hover:bg-white/10 rounded-lg mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assignment" data-weight="fill" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-body-base text-body-base">Gestión de Pedidos</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-inverse-on-surface/70 hover:bg-white/10 rounded-lg mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="engineering" data-weight="fill" style="font-variation-settings: 'FILL' 1;">engineering</span>
+<span class="font-body-base text-body-base">Órdenes &amp; Técnicos</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 bg-primary text-on-primary font-bold rounded-lg mx-2 active:scale-95 duration-150 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long" data-weight="fill" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-body-base text-body-base">Facturación</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-[260px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-260px)] h-16 bg-surface-container-lowest dark:bg-surface-container-low border-b border-outline-variant shadow-sm flex items-center justify-between px-container_margin z-10">
+<div class="flex items-center">
+<button class="md:hidden mr-4 text-on-surface hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-title-sm font-title-sm font-bold text-on-surface">Security Operations Manager</h1>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-full text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 w-64 transition-all" placeholder="Buscar..." type="text">
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications" data-weight="fill">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full border-2 border-surface-container-lowest"></span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="sensors" data-weight="fill">sensors</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2 cursor-pointer" data-alt="A professional headshot of a corporate administrator, female, mid-30s, wearing smart-casual attire in a well-lit, modern office setting. The lighting is soft and flattering, conveying competence and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOLOZSH9uNLQ8jVBEScEcLot44SCXsI9pt-gUi6CCzrDHm8gfJfWKvmQj5pKc2zp8slw1Ag5K5vg4m1ca6t_NxMvmsCAOrNXrNhmyYLm-s_NiGk30V0dFZjXwH2n7Wyck-s5WJwMsNing7rqrtTEpNl_MZtAH2lpBd80SuDzUHJAzVxqT96MILS5ec15C5KmlEOeazlqVFEGg1YQ5rqj4AsDHkFDYS6QmpNIBKb1JQIQYtx82lCXwrCA">
+</div>
+</header>
+<!-- Page Content -->
+<div class="mt-16 p-container_margin flex-1 flex flex-col gap-6 max-w-7xl mx-auto w-full">
+<!-- Page Header & Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Facturación</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Gestión de facturas y cobros de Tecno-Innova C.A.</p>
+</div>
+<button class="bg-primary hover:bg-primary-fixed-variant text-on-primary px-5 py-2.5 rounded-lg font-title-sm text-title-sm flex items-center shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined mr-2 text-[20px]">add</span>
+                        Crear Nueva Factura
+                    </button>
+</div>
+<!-- Metrics Bento Grid (Optional enhancement for dashboard feel) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-card_padding rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(30,41,59,0.02)] flex items-center justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-1">Total Facturado (Mes)</p>
+<p class="font-display-lg text-display-lg text-on-surface">$45,230</p>
+</div>
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-card_padding rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(30,41,59,0.02)] flex items-center justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-1">Pendiente de Cobro</p>
+<p class="font-display-lg text-display-lg text-error">$12,400</p>
+</div>
+<div class="w-12 h-12 bg-error-container text-on-error-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">pending_actions</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-card_padding rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(30,41,59,0.02)] flex items-center justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-1">Facturas Emitidas</p>
+<p class="font-display-lg text-display-lg text-on-surface">128</p>
+</div>
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">receipt</span>
+</div>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(30,41,59,0.05)] flex-1 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="font-title-sm text-title-sm text-on-surface">Facturas Recientes</h3>
+<div class="flex items-center space-x-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors" title="Filtrar">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors" title="Exportar CSV">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="font-label-caps text-label-caps text-on-surface-variant uppercase px-6 py-3">ID Factura</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant uppercase px-6 py-3">Cliente</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant uppercase px-6 py-3">Fecha</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant uppercase px-6 py-3">Monto</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant uppercase px-6 py-3">Estado</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant uppercase px-6 py-3 text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<tr class="hover:bg-[#f1f5f9] transition-colors group">
+<td class="px-6 py-4 font-data-mono text-data-mono text-on-surface">FAC-2023-1042</td>
+<td class="px-6 py-4">
+<div class="font-body-base text-body-base font-medium text-on-surface">Corporación Acme S.A.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">RIF: J-12345678-9</div>
+</td>
+<td class="px-6 py-4 font-body-base text-body-base text-on-surface-variant">24 Oct, 2023</td>
+<td class="px-6 py-4 font-data-mono text-data-mono text-on-surface font-semibold">$1,250.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-primary/10 text-primary uppercase">
+                                            Pagado
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary-container font-body-sm text-body-sm font-medium flex items-center justify-end w-full group-hover:underline" onclick="alert('Descargando PDF para FAC-2023-1042')">
+<span class="material-symbols-outlined text-[18px] mr-1">picture_as_pdf</span>
+                                            Descargar
+                                        </button>
+</td>
+</tr>
+<tr class="hover:bg-[#f1f5f9] transition-colors group">
+<td class="px-6 py-4 font-data-mono text-data-mono text-on-surface">FAC-2023-1041</td>
+<td class="px-6 py-4">
+<div class="font-body-base text-body-base font-medium text-on-surface">TechSolutions Ltda.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">RIF: J-98765432-1</div>
+</td>
+<td class="px-6 py-4 font-body-base text-body-base text-on-surface-variant">22 Oct, 2023</td>
+<td class="px-6 py-4 font-data-mono text-data-mono text-on-surface font-semibold">$3,400.50</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-error/10 text-error uppercase">
+                                            Pendiente
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary-container font-body-sm text-body-sm font-medium flex items-center justify-end w-full group-hover:underline" onclick="alert('Descargando PDF para FAC-2023-1041')">
+<span class="material-symbols-outlined text-[18px] mr-1">picture_as_pdf</span>
+                                            Descargar
+                                        </button>
+</td>
+</tr>
+<tr class="hover:bg-[#f1f5f9] transition-colors group">
+<td class="px-6 py-4 font-data-mono text-data-mono text-on-surface">FAC-2023-1040</td>
+<td class="px-6 py-4">
+<div class="font-body-base text-body-base font-medium text-on-surface">Servicios Integrales C.A.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">RIF: J-45678912-3</div>
+</td>
+<td class="px-6 py-4 font-body-base text-body-base text-on-surface-variant">20 Oct, 2023</td>
+<td class="px-6 py-4 font-data-mono text-data-mono text-on-surface font-semibold">$850.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-primary/10 text-primary uppercase">
+                                            Pagado
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary-container font-body-sm text-body-sm font-medium flex items-center justify-end w-full group-hover:underline" onclick="alert('Descargando PDF para FAC-2023-1040')">
+<span class="material-symbols-outlined text-[18px] mr-1">picture_as_pdf</span>
+                                            Descargar
+                                        </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant bg-surface-bright flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mostrando 1 a 3 de 128 resultados</span>
+<div class="flex space-x-1">
+<button class="px-3 py-1 border border-outline-variant rounded bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low text-body-sm font-medium disabled:opacity-50" disabled="">Anterior</button>
+<button class="px-3 py-1 border border-primary bg-primary/10 text-primary rounded text-body-sm font-medium">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low text-body-sm font-medium">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low text-body-sm font-medium">Siguiente</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+
+
+</body></html>
